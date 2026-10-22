@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# metaaivm-profile — primary operation: verify the metaaivm agent profile
+# integrity and corpus layout.
+#
+# Usage:
+#   bin/run            # run the profile integrity check (verify.ts, local-only)
+#   bin/run check      # fast gate: bun test on profile + verify.ts compiles
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export RUN_FAST_ACTIVE=0
+BUN="${BUN:-/home/toxic/.bun/bin/bun}"; [ -x "$BUN" ] || BUN=bun
+
+if [ "${1:-}" = "check" ]; then exec ./bin/check; fi
+[ -f verify.ts ] || { echo "FAIL: verify.ts missing"; exit 1; }
+exec "$BUN" run verify.ts
