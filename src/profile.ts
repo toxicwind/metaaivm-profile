@@ -1,13 +1,13 @@
 /**
  * metaaivm-profile/src/profile.ts
  *
- * Executable agent profile for the MetaAIVM estate. Loads the
+ * Executable agent profile for the MetaAIVM Pens. Loads the
  * machine-readable profile.json, validates it against the observed
- * estate identifiers, and exposes the pre-agent launch path that
+ * Pens identifiers, and exposes the pre-agent launch path that
  * injects the autonomy directive for Hatch-autoloaded / ipnext agents.
  *
- * Observed estate facts (2026-09-30, receipts in ../README.md and
- * /home/toxic/pens/estate/hatch/metaaivm-corpus/):
+ * Observed Pens facts (2026-09-30, receipts in ../README.md and
+ * /home/toxic/pens/Pens/hatch/metaaivm-corpus/):
  * - metaaivm.com: Meta's per-user AI VM domain (WHOIS: Meta Platforms, Inc.)
  * - Gateway: wss://hatch.metaaivm.com/v1/noise (Noise_XX_25519_AESGCM_SHA256)
  * - Model identifier seen in agent rows: ipnext/avocado-5.16-v4
@@ -53,7 +53,7 @@ export async function loadProfile(): Promise<MetaAIVMProfile> {
 /**
  * Pre-agent path for MetaAIVM-identified agents: delegates to the
  * task-launch profile, which injects the autonomy directive when the
- * estate identity matches (Hatch autoloaded, *.metaaivm.com, ipnext/).
+ * Pens identity matches (Hatch autoloaded, *.metaaivm.com, ipnext/).
  */
 export function launchWithMetaAIVMProfile(
   body: string,

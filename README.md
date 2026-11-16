@@ -1,6 +1,6 @@
 # metaaivm-profile
 
-First-class agent profile for the Meta AI VM (metaaivm.com) estate.
+First-class agent profile for the Meta AI VM (metaaivm.com) Pens.
 
 ## What metaaivm.com is
 
@@ -22,7 +22,7 @@ Framing: protobuf `NoiseTransportFrame` envelopes, `ServiceRequest` /
 ## Corpus
 
 Non-duplicative material collected 2026-09-30 into
-`/home/toxic/pens/estate/hatch/metaaivm-corpus/`:
+`/home/toxic/pens/Pens/hatch/metaaivm-corpus/`:
 
 - `nikships/muse-cli` — Python CLI for the personal muse.ai agent; `docs/PROTOCOL.md`
   documents the full gateway protocol (258 methods in `routes.json`,
@@ -73,12 +73,12 @@ Two jobs, two mechanisms — both live on yote:
 
 - **Collector** — yote crontab `17 3 * * *`: runs
   `ranch/metaaivm/collector.ts` (Bun), appending to
-  `/home/toxic/pens/estate/hatch/metaaivm-harvest/`. State:
+  `/home/toxic/pens/Pens/hatch/metaaivm-harvest/`. State:
   `watermark.json` in the harvest dir. cronie confirmed active.
 - **Verifier** — systemd user unit `metaaivm-profile-verify.path`
   (enabled, active): event-driven, watches `profile.json`
   (`PathChanged`) and the corpus dir (`PathModified`), triggers
   `metaaivm-profile-verify.service` which runs `verify.ts` (12 checks)
-  and appends to `/home/toxic/pens/estate/hatch/metaaivm-profile-verify.log`.
+  and appends to `/home/toxic/pens/Pens/hatch/metaaivm-profile-verify.log`.
   This supersedes the older `metaaivm-profile-verify.timer` (04:17 daily),
   which is disabled and stays disabled — event-driven, never timers.
